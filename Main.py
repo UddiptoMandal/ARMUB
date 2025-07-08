@@ -5,8 +5,8 @@ import math
 t = 1
 ortho_threshold = 0.0000000000000001  #threshold for dot product of rows in an orthogonal matrix, not 0 exactly due to floating point round off error
 # Choose input and output file from here
-input_file = "had.36.will.txt"
-output_file = "output_36.txt"
+input_file = "had.256.syl.txt"
+output_file = "output_256-1.txt"
 # Create the epsilon-Hadamard matrices Y1, Y2
 """
 Y1, Y2 = epsilon-Hadamard matrices of order 4n-t
@@ -23,13 +23,13 @@ def eHadamard(H, n, t):
     I = np.eye(t) 
     try:
         inv1 = np.linalg.inv(I + U)
-        Y1 = (D - W @inv1@V)
+        Y1 = (D - (W @ inv1 @ V))
     except np.linalg.LinAlgError:
         print("Error: (I + U) is singular and cannot be inverted. Try a different Hadamard matrix")
         exit(0)
     try:
         inv2 = np.linalg.inv(I-U)
-        Y2 = (D + W@inv2@V)
+        Y2 = (D + (W @ inv2 @V))
     except np.linalg.LinAlgError:
         print("Error: (I - U) is singular and cannot be inverted. Try a different Hadamard matrix")
         exit(0)
@@ -65,9 +65,8 @@ def epsilon(Y, n, t):
     drift_above_1, drift_below_1, drift_above_n1, drift_below_n1 = (0, 0, 0, 0)
     for i in range(4*n-t):
         for j in range(4*n-t):
-            element = Y[i][j]
-            e = np.abs(element)*math.sqrt(4*n-t)-1
-            element *= math.sqrt(4*n-t)
+            element = Y[i][j] * math.sqrt(4*n-t)
+            e = np.abs(element)-1
             if abs(e) > max:
                 max = abs(e)
             if element >1:
@@ -130,10 +129,9 @@ print("Y1 check for orthogonality:")
 ortho(Y1, n, t)
 print("Y2 check for orthogonality:")
 ortho(Y2, n, t)
-print("Epsilon values for the Hadamard matrix used, and the epsilon-Hadamard matrices created")
+print("Epsilon values for the epsilon-Hadamard matrices created")
 output += "Epsilon values for the Hadamard matrix used, and the epsilon-Hadamard matrices created\n"
 epsi, drift_above_1, drift_below_1, drift_above_n1, drift_below_n1 = epsilon(H, n, 0)
-output += f"e_Hadamard: {epsi}, drift_above_1: {drift_above_1}, drift_below_1: {drift_below_1}, drift_above_n1: {drift_above_n1}, drift_below_n1: {drift_below_n1}\n"
 print("e_Hadamard: ", epsi)
 epsi, drift_above_1, drift_below_1, drift_above_n1, drift_below_n1 = epsilon(Y1, n, t)
 output += f"e_Y1: {epsi}, drift_above_1: {drift_above_1}, drift_below_1: {drift_below_1}, drift_above_n1: {drift_above_n1}, drift_below_n1: {drift_below_n1}\n"

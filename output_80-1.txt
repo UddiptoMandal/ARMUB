@@ -37,6 +37,5 @@ Y2 :
  [-0.12587686 -0.12587686  0.09772994 ...  0.09772994  0.09772994
    0.09772994]]
 Epsilon values for the Hadamard matrix used, and the epsilon-Hadamard matrices created
-e_Hadamard: 0, drift_above_1: 0, drift_below_1: 0, drift_above_n1: 0, drift_below_n1: 0
 e_Y1: 0.10619957923934731, drift_above_1: 0.0936602706745262, drift_below_1: 0, drift_above_n1: 0.10619957923934731, drift_below_n1: 0
 e_Y2: 0.13135730951067848, drift_above_1: 0, drift_below_1: 0.13135730951067848, drift_above_n1: 0, drift_below_n1: 0.11881800094585748
