@@ -3,7 +3,7 @@ import math
 # This code works for any Hadamard matrix which is a multiple of 4, and creates epsilon-Hadamard matrices of order 4n-t, t ={1,2,3}
 # Change t from here to be 1,2,3 as you like
 t = 1
-ortho_threshold = 0.0000000000000001  #threshold for dot product of rows in an orthogonal matrix, not 0 exactly due to floating point round off error
+ortho_threshold = 0.000000000000001  #threshold for dot product of rows in an orthogonal matrix, not 0 exactly due to floating point round off error
 # Choose input and output file from here
 input_file = "had.256.syl.txt"
 output_file = "output_256-1.txt"
