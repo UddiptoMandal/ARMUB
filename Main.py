@@ -2,11 +2,11 @@ import numpy as np
 import math
 # This code works for any Hadamard matrix which is a multiple of 4, and creates epsilon-Hadamard matrices of order 4n-t, t ={1,2,3}
 # Change t from here to be 1,2,3 as you like
-t = 1
-ortho_threshold = 0.000000000000001  #threshold for dot product of rows in an orthogonal matrix, not 0 exactly due to floating point round off error
+t = 3
 # Choose input and output file from here
-input_file = "had.256.syl.txt"
-output_file = "output_256-1.txt"
+input_file = "had.80.pal.txt"
+output_file = "output_80-1.txt"
+ortho_threshold = 0.000000000000001  #threshold for dot product of rows in an orthogonal matrix, not 0 exactly due to floating point round off error
 # Create the epsilon-Hadamard matrices Y1, Y2
 """
 Y1, Y2 = epsilon-Hadamard matrices of order 4n-t
@@ -129,8 +129,8 @@ print("Y1 check for orthogonality:")
 ortho(Y1, n, t)
 print("Y2 check for orthogonality:")
 ortho(Y2, n, t)
-print("Epsilon values for the epsilon-Hadamard matrices created")
-output += "Epsilon values for the Hadamard matrix used, and the epsilon-Hadamard matrices created\n"
+print("Epsilon values for the Hadamard matric used and the epsilon-Hadamard matrices created")
+output += "Epsilon values for the epsilon-Hadamard matrices created\n"
 epsi, drift_above_1, drift_below_1, drift_above_n1, drift_below_n1 = epsilon(H, n, 0)
 print("e_Hadamard: ", epsi)
 epsi, drift_above_1, drift_below_1, drift_above_n1, drift_below_n1 = epsilon(Y1, n, t)
